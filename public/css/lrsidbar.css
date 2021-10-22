@@ -1,0 +1,67 @@
+.lr-side{
+  position: fixed;
+  height: 100vh;
+  background-color:#e6e6e6;
+  box-sizing: border-box;
+  padding: .4rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.left-side{
+  left: 0px;
+}
+.right-side{
+  right: 0px;
+}
+.list-nice{
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  color: var(--mdb-primary);
+  list-style-type: none;
+  padding:0px ;
+
+
+}
+.l-list-nice{
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  color: var(--mdb-primary);
+  list-style-type: none;
+  padding:0px ;
+
+}
+.list-nice li{
+  list-style-type: none;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.l-list-nice li{
+  list-style-type: none;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.felter-ul li{
+  
+  padding: 5px;
+  margin: 5px;
+}
+.d-flex{
+  flex-wrap: wrap;
+}
+.laung-filter {
+ 
+  padding-top:1rem!important ;
+  padding-left: .3rem!important;
+  padding-right: 0px!important;
+}
+.laung-filter a{
+  padding: 7px;
+  font-size: .8rem;
+  text-transform: capitalize;
+}

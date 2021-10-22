@@ -1,0 +1,35 @@
+.main-div-component{
+  position: relative;
+  margin-top: 4rem;
+  min-height:100vh ;
+  padding-top: 1rem;
+}
+.filters button{
+margin-left: 20px;
+margin-right: 20px;
+text-transform: capitalize;
+font-size: 1rem;
+transform: translateX(-50%);
+}
+.show-data{
+  margin-top: 2.4rem!important;
+
+}
+.bg-orange{
+  background-color: var(--mdb-orange);
+  color: #fff;
+}
+
+/* acctor page */
+.btn-sm{
+  text-transform:capitalize!important;
+padding-left: .4rem!important;
+padding-right: .4rem!important;
+width:90px;
+
+
+
+}
+.btn-sm i{
+  margin-right:5px!important;
+}

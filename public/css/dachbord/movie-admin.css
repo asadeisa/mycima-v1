@@ -1,0 +1,76 @@
+.gradient-custom {
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  }
+  
+  .card-custom {
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+  background-color: #f8f9fa ;
+  }
+  
+  
+  .input-custom {
+  background-color: white ;
+  }
+  
+  .white-text {
+  color: hsl(52, 0%, 98%);
+  font-weight: 100 ;
+  font-size: 14px;
+  }
+  
+  .back-button {
+  background-color: hsl(52, 0%, 98%);
+  font-weight: 700;
+  color: black ;
+  margin-top: 50px ;
+  }
+  .top-10{
+    position:relative;
+    top:10px;
+  }
+
+
+.disable-border button{
+  text-transform: capitalize;
+  font-size:1rem;
+  border-top:none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  width:14rem;
+}  
+.flex-center{
+justify-content: center;
+margin: auto;
+}
+/* style the time input  */
+.time{
+  width: 235px;
+  display: flex;
+  text-align: center;
+  height: 30px;
+  margin-bottom: 10px;
+  
+}
+.time label{
+margin-left: 3px!important;
+
+  
+}
+input{
+  position: relative;
+  width: 40px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #59a5ed;
+  outline: none;
+}
+.filepond--drop-label{
+  background-color: #eee;
+  position: relative;
+}
+.wheat{
+  color:#fff;
+}

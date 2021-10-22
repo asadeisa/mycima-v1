@@ -1,0 +1,12 @@
+.stras{
+  position: relative;
+  width: 200px;
+}
+.stras div{
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.stras i{
+  font-size: 1.1rem;
+  cursor: pointer;
+}
