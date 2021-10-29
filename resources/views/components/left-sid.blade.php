@@ -26,7 +26,7 @@
             @endif
               {{-- {{ dd(session()->get('helperinfo')) }} --}}
 
-            @if( session()->get('helperinfo') != "success")
+            @if(auth()->user() != null && auth()->user()->helper_info !=1)
 
             <li>
                <button
@@ -36,7 +36,13 @@
               </button> 
                 
             </li>
-           
+            @else
+            <li>
+              <button id="recommended"
+              class="btn btn-info " >recommended
+             </button> 
+               
+           </li>
             @endif
             <li>
             

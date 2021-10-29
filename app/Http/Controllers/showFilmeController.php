@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class showFilmeController extends Controller
 {
     //
-public function gotoView($movieDitaels)
+public function goView($movieDitaels)
 {
     # code...
 
@@ -22,7 +22,7 @@ public function show($id)
     # code...
 
     $movieDitaels = $this->getmovie($id);
-    return $this->gotoView($movieDitaels);
+    return $this->goView($movieDitaels);
 
 }
 
@@ -37,6 +37,7 @@ public function getmovie($id)
 
 public function download($id)
 {
+   
     DB::table("buys")
     ->insert([
         "user_id" => auth()->user()->id,

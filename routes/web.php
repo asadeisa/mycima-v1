@@ -9,15 +9,13 @@ use App\Http\Controllers\showFilmeController;
 use App\Http\Controllers\NotificationController;
 
 
-// Route::get('/', function () {
-    //     return view('auth.login');
-    // });
-Route::get("/",[Controller::class,"showmovie"]);
+
+Route::get("/",[Controller::class,"gotoview"]);
 Route::get('register', function () {
     return view('auth.register');
 })->name("register");
 
-Route::get("home",[Controller::class,"showmovie"])
+Route::get("home",[Controller::class,"gotoview"])
 ->name("home");
 
 
@@ -31,7 +29,8 @@ Route::group(["middleware"=>"auth"],function(){
     Route::get("show-notifictation/{id}",[showFilmeController::class,"show"]);
    
 
-    Route::get("home",[LoginController::class,"index"])->name("home");
+    Route::get("home",[LoginController::class,"index"])
+    ->name("home")->middleware('is_admin');
     Route::get("home/movie{is_seres}",[Controller::class,"getmovie"])
     ->name("home/movie");
     Route::get("home/series{is_seres}",[Controller::class,"getmovie"])

@@ -30,6 +30,8 @@
           </span>
         </form>
       </ul>
+
+    
       <!-- Left links -->
       <ul class="navbar-nav">
         <!-- Notification dropdown -->
@@ -59,6 +61,7 @@
         <!-- Notification dropdown -->
         @if(auth()->user() !==null)
         {{-- logout and profile --}}
+        
         <li class="nav-item me-3 me-lg-0 dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -135,8 +138,9 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+@if(auth()->user()!= null && auth()->user()->send_not ==1)
 <script src="{{ asset("js/showNotification.js") }}"></script>
-
+@endif
 </header>
 
 

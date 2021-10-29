@@ -3,18 +3,19 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilemController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\downloadsController;
-// Route::get("t",function(){
-//   return view("admin.dashboard");
-// });
-// dashboard.addfilem
+
 Route::group(["middleware"=>"auth"],function(){
+
+ 
+  Route::get("dashboard",[LoginController::class,"adminDachboard"])
+  ->name('dashboard');
 
   Route::group([
   "prefix"=>"dashboard",
   "as"=>"dashboard.",
-  "middleware"=>"is_admin"],function(){
-    Route::get("",[Controller::class,"index"])->name('dashboard');
+  "middleware"=>"checkAdmin"],function(){
   
     // Route::get("movie",[FilemController::class,"index"])->name("filem");
     // Route::resource('movie',[FilemController::class]);

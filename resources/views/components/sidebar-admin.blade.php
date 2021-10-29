@@ -19,7 +19,7 @@
               ><span>Main dashboard</span>
           </a>
           <a 
-             href="{{ route("dashboard.dashboard") }}"
+             href="{{ route("dashboard") }}"
              @if( url()->full() ==url('dashboard'))
              class="list-group-item list-group-item-action py-2 ripple active"
              @endif

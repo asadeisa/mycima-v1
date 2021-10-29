@@ -13,12 +13,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-public function index(){
-    
-    return view("admin.dashboard");
-}
 
-public function gotoview($allmovie)
+public function gotoview($is_series=null)
 {
     # code...
     if(auth()->user() !=null)
@@ -35,8 +31,9 @@ public function gotoview($allmovie)
             return $value->user_id == auth()->user()->id;
         })->toArray()));
 
-        return view("home",compact(["allmovie","userDataHelper","HelperInfo"]));
+        return view("home",compact(["is_series","userDataHelper","HelperInfo"]));
     }else{
+        $allmovie = $this->getAllmovie();
         return view("welcome",compact("allmovie"));
 
 
@@ -54,70 +51,39 @@ public function getHelperInfo()
     ;
 }
 
-public function showmovie()
-{
-    # code...
-   $allmovie = $this->getAllmovie();
 
-   return $this->gotoview($allmovie);
-}
-
-public function getAllmovie( $is_series=null,$start=0,$end=12)
+public function getAllmovie($start=0,$end=12)
 {
-    if($is_series ==1){
-        return  DB::table("movies")
-        ->where("is_series","=",1)
-        ->offset($start)
-        ->limit($end)
-        ->get([ "id", "movie_name","evaluate","img" ])
-        ;
-    }
-    elseif($is_series =="0")
-    {
-        return  DB::table("movies")
-        ->where("is_series","=",0)
-        ->offset($start)
-        ->limit($end)
-        ->get([ "id","movie_name","evaluate","img" ])
-        ;
-    }
-    else
-    {
 
         return  DB::table("movies")
         ->offset($start)
         ->limit($end)
         ->get(["id","movie_name","evaluate","img" ])
         ;
-    }
-
 }
 
 public function getmovie($is_series)
 {
-    $allmovie  =  $this->getAllmovie($is_series,0,10);
-    return $this->gotoview($allmovie);
+    
+    return $this->gotoview($is_series);
 }
 
 public function setHelperInfo(Request $request)
 {
-    
- 
-DB::table("helper_infos")
-->insert([
-    "user_id"=>auth()->user()->id,
-    "age" =>$request->age,
-    "sex" => $request->sex,
-    "f_type" => $request->type,
-    "have_family" => $request->have_family,
-    "avg_movie_time" => $request->avg_movie_time,
-    "f_lang" => $request->languages,
-    "old" => $request->old,
-]);
-$request->session()->put('helperinfo', "success");
-
-return $this->showmovie();
-// dd($request->input());
+    DB::table("helper_infos")
+    ->insert([
+        "user_id"=>auth()->user()->id,
+        "age" =>$request->age,
+        "sex" => $request->sex,
+        "f_type" => $request->type,
+        "have_family" => $request->have_family,
+        "avg_movie_time" => $request->avg_movie_time,
+        "f_lang" => $request->languages,
+        "old" => $request->old,
+    ]);
+    DB::table("users")->where("id","=",auth()->user()->id)
+    ->update(["helper_info" =>1]);
+    return $this->gotoview();
 }
 
 

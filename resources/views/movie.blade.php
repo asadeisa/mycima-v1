@@ -148,9 +148,23 @@
             </div>
     
         </div>
-  </section>
+
+    
+          <div x-data="{openc:false}" class="my-2">
+            <button @click="openc = true" id="showContent" class="btn btn-info btn-lg my-3">show related video</button>
+
+            <div  x-show="openc" class="my-2">
+              @livewire("show-related-movie",["movieId"=>$movieDitaels->id])
+    
+            </div>
+          </div>
+        {{-- @livewireScripts --}}
+
+        
+      </section>
         
 </section>
 
+<script type="text/javascript" src="{{ asset("js/apriori.js") }}"></script>
 @endsection
 

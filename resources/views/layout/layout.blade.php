@@ -32,7 +32,11 @@
 
     {{-- js link --}}
     <script  type="text/javascript" src=" {{ asset("js/alpine.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/mang-apriori.js") }}"></script>
+    @if(auth()->user() != null &&  auth()->user()->helper_info)
+    <script  src="{{ asset("js/k-meanss.js") }}"></script>
     <script  type="text/javascript" src=" {{ asset("js/index.js") }}"></script>
+    @endif
     <script defer type="text/javascript" src=" {{ asset("js/admin/app.js") }}"></script>
     {{-- <script defer type="text/javascript" src=" {{ asset("js/fontawsom.js") }}"></script> --}}
     {{-- End js link --}}

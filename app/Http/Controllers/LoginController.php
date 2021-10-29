@@ -11,17 +11,12 @@ class LoginController extends Controller
     //
     public function index()
     {
+      
+        return Controller::gotoview();
         
-        if(Auth::user()->is_admin)
-        {
-            // url()->full() =url('dashboard');
-            // $url = url('dashboard');
-            return view("admin.dashboard");
-        }
-        else{
-            $allmovie =  Controller::showmovie()->allmovie;
-           return Controller::gotoview( $allmovie);
-         
-        }
+    }
+    public function adminDachboard()
+    {
+        return view("admin.dashboard");
     }
 }

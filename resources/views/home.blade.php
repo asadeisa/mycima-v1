@@ -1,5 +1,9 @@
 {{-- {{ dd( $HelperInfo) }} --}}
-{{-- <script>
+@extends("layout.layout")
+@section("welcompag")
+<x-header></x-header>
+
+<script>
   var userDataH = <?php echo $userDataHelper ?>;
   var helberInfo = <?php echo $HelperInfo ?>;
 console.log(userDataH);
@@ -43,91 +47,42 @@ for (let [key, value] of Object.entries(helberInfo)) {
 
 </script>
 
-<script  src="{{ asset("js/k-meanss.js") }}"></script>
-<script>
-  let clustersPoint= [];
-let clusterSipeliensUser =null;
-let customerData = arrayuserdata;
-// let data =helberdata
 
 
-let result  = kmeans(helberdata,3);
-console.log(result);
-
-let clustersResult = result.clusters;
-for(let i=0;i<clustersResult.length;i++)
-{
-  //  x.push(clustersResult[i].points);
-  clustersPoint =clustersResult[i].points;
-  // console.log(clustersPoint);
-  for(let j=0;j<clustersPoint.length;j++)
-  {
-   
-    if(  clustersPoint[j].length === customerData.length &&
-      clustersPoint[j].every((val, index) => val === customerData[index])
-     )
-   {
-     clusterSipeliensUser = clustersPoint;
-     break
-     
-     
-     
-   }
-  }
-  if(clusterSipeliensUser != null){
-    break
-  }
-
-}
-   console.log(clustersPoint,"points");
-  //  console.log(clusterSipeliensUser,"sipeliens");
-
-</script>
- --}}
 
 
-@extends("layout.layout")
-@section("welcompag")
-<x-header></x-header>
 <section class="clear-content"
 >
 
   <x-left-sid></x-left-sid>
   <x-right-sid></x-right-sid>
   <link rel="stylesheet" href="{{ asset("css/welcom.css")  }} " />
+  <link rel="stylesheet" href="{{ asset("css/ribbon.css")  }} " />
 
   {{-- welcom pages  --}}
   <section class="main-page col-lg-7 ">
+    <style> 
+    #show-recommended{
+      display: none;
+    }  
+    </style>
 
-    <div class="all-movie d-flex">
-      @foreach($allmovie as $movie)
-        
-      <div class="card">
-        <img
-           {{-- src="{{asset("storage/avatars/".$img) }}" --}}
-          src="{{ asset("storage/avatars/".$movie->img) }}"
-          class="card-img-top"
-          height="250"
-          widht="150"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ $movie->movie_name }}</h5>
-          <p class="card-text">
-         watch and downloud {{ $movie->movie_name }}
-          </p>
-          <a href="{{ route("show-filme",$movie->id) }}" class="btn btn-primary">show</a>
-        </div>
-      </div>
-      @endforeach
-     
-</div>
+    <div >
+    <div id="show-recommended">
+      @livewire('recommended-k-movie',["is_series"=>$is_series])
+      
+    </div>
+
+   @livewire('home-clustring',["is_series"=>$is_series])
+   
+    </div>
 
     {{-- End the welcom page --}}
   </section>
 </section>
 
-
+<script src="{{ asset("js/showRecommended.js") }}"></script>
 <x-model-info></x-model-info>
+
 
 @endsection

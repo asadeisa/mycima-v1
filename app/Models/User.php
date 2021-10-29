@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Buy;
 use App\Models\Stars;
-use Laravel\Sanctum\HasApiTokens;
+// use Laravel\Sanctum\HasApiTokens;
 // use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -16,10 +16,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
+    // use HasApiTokens;
     use HasFactory;
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    // use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,20 +29,21 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        
+        'password',
+        "helper_info",
     ];
 
-    // /**
-    //  * The attributes that should be hidden for serialization.
-    //  *
-    //  * @var array
-    //  */
-    // protected $hidden = [
-    //     'password',
-    //     'remember_token',
-    //     'two_factor_recovery_codes',
-    //     'two_factor_secret',
-    // ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [
+       
+        'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+    ];
 
     // /**
     //  * The attributes that should be cast.

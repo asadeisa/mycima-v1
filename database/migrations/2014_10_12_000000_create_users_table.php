@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             // $table->integer("age");
             // $table->boolean("is_married")->default(true);
             $table->boolean("is_admin")->default(false);
-            $table->boolean("send_not")->default(false);
+            $table->boolean("helper_info")->default(false);
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
